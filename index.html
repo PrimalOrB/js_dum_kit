@@ -64,6 +64,8 @@
     // Find all keys and add listeners to remove CSS class after transition
     var keys = Array.from(document.querySelectorAll('.key'));
     keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+
+    // Listen for keydown and playsound
     window.addEventListener('keydown', playSound);
 
     // Look for transition, and remove if it exists
@@ -72,7 +74,7 @@
       e.target.classList.remove('playing');
     };
 
-    // Listen for keydown
+    // Play sond
     function playSound(e) {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
       const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
