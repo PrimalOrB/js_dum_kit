@@ -85,6 +85,7 @@
     function play(e) {
       var audioSrc = document.querySelector('audio[data-key="' + keyCode + '"]')
       var audioPlay = new Audio(audioSrc.src);
+      audio.currentTime = 0;
       audioPlay.play();
     };
 
