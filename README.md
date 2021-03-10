@@ -3,6 +3,8 @@
 ## Purpose
 * Play drum sounds corresponding to keyboard buttons pressed
 
+![image](https://user-images.githubusercontent.com/69044956/110629926-bd78d680-8172-11eb-923e-904a4f98c21c.png)
+
 ## Description
 * Listen for keydown
 * Get keyCode from keydown event
