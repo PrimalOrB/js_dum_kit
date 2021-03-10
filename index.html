@@ -60,9 +60,11 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
   <script type="text/javascript">
+
     // Find all keys and add listeners to remove CSS class after transition
     var keys = Array.from(document.querySelectorAll('.key'));
     keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+    window.addEventListener('keydown', playSound);
 
     // Look for transition, and remove if it exists
     function removeTransition(e) {
@@ -71,23 +73,15 @@
     };
 
     // Listen for keydown
-    window.addEventListener('keydown', function (event) {
-      keyCode = event.keyCode
-      var selectedEl = document.querySelector('.key[data-key="' + keyCode + '"]')
-      console.log(selectedEl)
-      if (selectedEl) {
-        selectedEl.classList.add('playing')
-        play(keyCode)
-      }
-    });
+    function playSound(e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+      if (!audio) return;
 
-    // Play audio
-    function play(e) {
-      var audioSrc = document.querySelector('audio[data-key="' + keyCode + '"]')
-      var audioPlay = new Audio(audioSrc.src);
+      key.classList.add('playing');
       audio.currentTime = 0;
-      audioPlay.play();
-    };
+      audio.play();
+    }
 
   </script>
 
